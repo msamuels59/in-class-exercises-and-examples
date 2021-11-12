@@ -1,9 +1,26 @@
-# Instructions for this exercise are here https://realpython.com/beginners-guide-python-turtle/
-print("This is my turtle program")
+# Instructions for this exercise are here https://realpython.com/beginners-guide-python-turtle/ 
+
 import turtle
-turtle.title("My Turtle Program")
-turtle.bgcolor("blue")
-t = turtle.Turtle()
-t.fillcolor("white")
-t.circle(90)
+import random
+turtle.title("Fast and Furious: Turtle Drift")
+turtle.bgcolor("#af73f0")
+player_one=turtle.Turtle()
+player_one.color("green")
+player_one.shape("turtle")
+player_one.penup()
+player_one.goto(-200,100)
+player_two=player_one.clone()
+player_two.color("blue")
+player_two.penup()
+player_two.goto(-200,-100)
+player_one.goto(300,60)
+player_one.pendown()
+player_one.circle(40)
+player_one.penup()
+player_one.goto(-200,100)
+player_two.goto(300,-140)
+player_two.pendown()
+player_two.circle(40)
+player_two.penup()
+player_two.goto(-200,-100)
 turtle.mainloop()
