@@ -26,37 +26,39 @@
 # I will hit up each group individually after round one and get you set for round 2.
 import random
 
-player_1 = []
-player_2 = []
 
 die=[True,False]
 #true is hit, false is miss
-horse_list = ['H', 'O', 'R', 'S', 'E']
-
-def game():
-    if player_1 == "HORSE" :
-        print("Player 2 Wins!")
-    elif player_2 == "HORSE" :
-        print("Player 1 Wins!")
-    else:
-        shoot()
+horse_list = ['no letters','H', 'HO', 'HOR', 'HORS', 'HORSE']
 
 #shoot function
-def shoot():
-    player_1_turn = input("Press enter to shoot")
-    shot_outcome = random.choice(die)
-    if shot_outcome == True :
-        print("Nice Shot!")
-    else:
-        for index, elem in enumerate(horse_list):
-            if(player_1<len(horse_list)-1):
-                player_1.append(horse_list[index])
+def game():
+    player_1 = 0
+    player_2 = 0
+    for i in range(100) :
+            player_1_turn = input("Press enter to shoot, you have " + horse_list[player_1])
+            shot_outcome = random.choice(die)
+            if shot_outcome == True :
+                print("Nice Shot!")
             else:
-                player_1.append(elem)
-shoot()
-print(player_1)
-
+                if player_1 < 5 :
+                    player_1 += 1
+                    print("You have " + horse_list[player_1])
+                else:
+                    print("You have HORSE, Player 2 Wins")
+                    break
+            player_2_turn = input("Press enter to shoot, you have " + horse_list[player_2])
+            shot_outcome = random.choice(die)
+            if shot_outcome == True :
+                print("Nice Shot!")
+            else:
+                if player_2 < 5 :
+                    player_2 += 1
+                    print("You have " + horse_list[player_2])
+                else:
+                    print("You have HORSE, Player 1 Wins!")
+                    break
         
-        
+game()
         
 
