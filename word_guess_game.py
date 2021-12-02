@@ -1,32 +1,37 @@
-from math import pi
 import random
-
 import string
 
 #open words.txt create a dictionary with of the words and amount of characters in said words
 with open('words.txt', 'r') as f:
     pick_list = [line.strip() for line in f]
 
-#word_dictionary = {}
-#for item in pick_list:
-#    word_dictionary.setdefault(len(item), []).append(item)
-easy_list=[x for x in pick_list if len(x) >= 4 and len(x) <= 6]
-med_list=[x for x in pick_list if len(x) >= 6 and len(x) <= 8]
-hard_list=[x for x in pick_list if len(x) >= 8]
-
-def vaild_word(pick_list):
-    word = random.choice(pick_list) #choose word from list
-    return word.upper()
-
 #user difficulty selection 
 #easy 4-6
 #med 6-8
 #hard 8+
+easy_list=[x for x in pick_list if len(x) >= 4 and len(x) <= 6]
+med_list=[x for x in pick_list if len(x) >= 6 and len(x) <= 8]
+hard_list=[x for x in pick_list if len(x) >= 8]
 
+def diff():
+    diff_choice = input("Choose your difficulty: easy, medium, or hard.").lower()
+    while diff_choice != 'easy' or 'medium' or 'hard':
+        if diff_choice == 'easy':
+            word = random.choice(easy_list)
+            return word.upper()
+        elif diff_choice == 'medium':
+            word = random.choice(med_list)
+            return word.upper()
+        elif diff_choice == 'hard':
+            word = random.choice(hard_list)
+            return word.upper()
+        else:
+            print('Invalid selection, try again.')
+            diff_choice = input("Choose your difficulty: easy, medium, or hard.").lower()
 
 
 def guess():
-    word = vaild_word(pick_list)
+    word = diff()
     word_letters = set(word) # letters in the word
     alphabet = set(string.ascii_uppercase)
     used_letters = set() # what the user has guessed
@@ -58,10 +63,10 @@ def guess():
         else:
             print('Invalid input, try again.')
     if lives == 0:
-        print("You Lose!")
+        print(f"You Lose!, the word was {word}")
     else:
         print("You guessed the word, you win!")
-print(hard_list)
+guess()
 
 
 
