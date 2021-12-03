@@ -55,7 +55,7 @@ def guess():
                 print('')
             else:
                 lives = lives - 1 
-                print('Your letter, ', user_letter, 'is not in the word.')
+                print(f'Your letter,  {user_letter} is not in the word. You have {lives} lives left.')
         
         elif user_letter in used_letters:
             print('You already guessed that.')
