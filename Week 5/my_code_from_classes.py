@@ -46,7 +46,7 @@ class Band:
 mouse_rat = Band('Mouse Rat')
 
 mouse_rat.members.extend([snoop,jewel])
-
+print(f'The members of {mouse_rat.name} are: ', [f'{member}' for member in mouse_rat.members])
 #create a new musician instance
 andy = Musician('Andy Dwierr', 'also guitar')
 ron = Musician('Ron Swanson', 'smooth jazz sax')
@@ -55,8 +55,19 @@ flea = Musician('Flea from RHCP', 'bass')
 #add those musicians to the list
 
 new_members = [andy, ron, flea]
-
 mouse_rat.members.extend(new_members)
+#print out the new band
+mouse_rat.show_members
+# get values of attribues for new members 
+member_info_tuples = [("Laurell", "harmonica"), ("Vanessa", "drums"), ("Samuel", "piano")]
+
+# new_members = []
+# create a musician instance for each new member
+for member_tuple in member_info_tuples:
+    name, instrument = member_tuple
+    new_member = Musician(name, instrument)
+    # add that new member to mouse_rat members
+    mouse_rat.members.append(new_member)
+
 
 mouse_rat.show_members
-
